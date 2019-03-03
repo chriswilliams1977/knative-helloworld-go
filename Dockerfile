@@ -21,7 +21,7 @@ COPY --from=builder /go/src/github.com/knative/docs/helloworld/helloworld /hello
 
 # Service must listen to $PORT environment variable.
 # This default value facilitates local development.
-ENV PORT 8080
+ENV PORT 3001
 
 # Run the web service on container startup.
 CMD ["/helloworld"]
