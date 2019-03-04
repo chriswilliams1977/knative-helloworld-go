@@ -12,9 +12,9 @@ func main() {
 	http.HandleFunc("/", handle)
 	//Do healthcheck
 	http.HandleFunc("/_ah/health", healthCheckHandler)
-	log.Print("Listening on port 3001")
+	log.Print("Listening on port 8080")
 	//Listen an serve on port 8080
-	log.Fatal(http.ListenAndServe(":3001", nil))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func handle(w http.ResponseWriter, r *http.Request) {

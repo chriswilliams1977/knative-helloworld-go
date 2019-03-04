@@ -9,7 +9,7 @@ spec:
       revisionTemplate:
         spec:
           container:
-            image: gcr.io/knative-protos/helloworld-go:v1
+            image: gcr.io/williamscj-knative-demos/knative-helloworld:v1
             env:
               - name: TARGET
-                value: "Go Sample v1"
+                value: "GCP"
