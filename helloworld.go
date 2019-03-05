@@ -7,33 +7,24 @@ import (
 	"os"
 )
 
-func main() {
-	//call handler
-	http.HandleFunc("/", handle)
-	//Do healthcheck
-	http.HandleFunc("/_ah/health", healthCheckHandler)
-	log.Print("Listening on port 8080")
-	//Listen an serve on port 8080
-	log.Fatal(http.ListenAndServe(":8080", nil))
-}
-
-func handle(w http.ResponseWriter, r *http.Request) {
-
-	//if request path invalid return error
-	if r.URL.Path != "/" {
-		http.NotFound(w, r)
-		return
-	}
-
-	//Check if env var has been set in yaml
+func handler(w http.ResponseWriter, r *http.Request) {
+	log.Print("Hello world received a request.")
 	target := os.Getenv("TARGET")
 	if target == "" {
-		target = "Dev"
+		target = "World"
 	}
-	//else return message in responsewriter
-	fmt.Fprintf(w, "Hello %s!\n", target)
+	fmt.Fprintf(w, "Hello %s!\n V3", target)
 }
 
-func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "ok")
+func main() {
+	log.Print("Hello world sample started.")
+
+	http.HandleFunc("/", handler)
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 }

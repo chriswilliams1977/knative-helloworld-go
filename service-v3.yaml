@@ -9,7 +9,7 @@ spec:
       revisionTemplate:
         spec:
           container:
-            image: gcr.io/williamscj-knative-demos/knative-helloworld:v1
+            image: gcr.io/williamscj-knative-demos/knative-helloworld:v3
             env:
               - name: TARGET
-                value: "GCP V2"
+                value: "GCP V3"
